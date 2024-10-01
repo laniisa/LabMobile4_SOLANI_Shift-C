@@ -17,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('Login Solani'),
         backgroundColor: Colors.blueAccent,
       ),
       body: Center(
@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _loginButton() {
     return ElevatedButton(
-      child: const Text("Login"),
+      child: const Text("Login Solani"),
       onPressed: () {
         if (_formKey.currentState!.validate()) {
           // Proses login

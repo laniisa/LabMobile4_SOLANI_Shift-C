@@ -11,7 +11,7 @@ class ProdukDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detail Produk'),
+        title: const Text('Detail Produk Solani'),
         backgroundColor: Colors.blueAccent,
       ),
       body: Center(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tokokita/ui/produk_page.dart';
+import 'package:tokokita/ui/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         ),
         colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.teal),
       ),
-      home: ProdukPage(), // Hapus 'const' dari sini
+      home: LoginPage(), // Hapus 'const' dari sini
     );
   }
 }

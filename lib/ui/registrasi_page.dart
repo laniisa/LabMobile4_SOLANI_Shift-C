@@ -17,7 +17,7 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Registrasi"),
+        title: const Text("Registrasi Solani"),
         backgroundColor: Colors.blueAccent,
       ),
       body: Center(
@@ -112,7 +112,7 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
 
   Widget _registrationButton() {
     return ElevatedButton(
-      child: const Text("Registrasi"),
+      child: const Text("Registrasi Solani"),
       onPressed: () {
         if (_formKey.currentState!.validate()) {
           // Proses registrasi
