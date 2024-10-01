@@ -10,29 +10,31 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  bool _isLoading = false;
-
-  final _emailTextboxController = TextEditingController();
-  final _passwordTextboxController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
+        backgroundColor: Colors.blueAccent,
       ),
-      body: SingleChildScrollView(
+      body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _emailTextField(),
+                const SizedBox(height: 16),
                 _passwordTextField(),
-                _buttonLogin(),
+                const SizedBox(height: 16),
+                _loginButton(),
                 const SizedBox(height: 30),
-                _menuRegistrasi(),
+                _registrationMenu(),
               ],
             ),
           ),
@@ -41,14 +43,14 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  // Membuat Textbox email
   Widget _emailTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Email"),
-      keyboardType: TextInputType.emailAddress,
-      controller: _emailTextboxController,
+      decoration: const InputDecoration(
+        labelText: "Email",
+        border: OutlineInputBorder(),
+      ),
+      controller: _emailController,
       validator: (value) {
-        // validasi harus diisi
         if (value!.isEmpty) {
           return 'Email harus diisi';
         }
@@ -57,49 +59,45 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  // Membuat Textbox password
   Widget _passwordTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Password"),
-      keyboardType: TextInputType.text,
+      decoration: const InputDecoration(
+        labelText: "Password",
+        border: OutlineInputBorder(),
+      ),
+      controller: _passwordController,
       obscureText: true,
-      controller: _passwordTextboxController,
       validator: (value) {
-        // jika karakter yang dimasukkan kurang dari 6 karakter
         if (value!.isEmpty) {
-          return "Password harus diisi";
+          return 'Password harus diisi';
         }
         return null;
       },
     );
   }
 
-  // Membuat Tombol Login
-  Widget _buttonLogin() {
+  Widget _loginButton() {
     return ElevatedButton(
-      child: const Text("Login Solani"),
+      child: const Text("Login"),
       onPressed: () {
-        var validate = _formKey.currentState!.validate();
-        // Tambahkan logika untuk memproses login di sini
+        if (_formKey.currentState!.validate()) {
+          // Proses login
+        }
       },
+      style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
     );
   }
 
-  // Membuat menu untuk membuka halaman registrasi
-  Widget _menuRegistrasi() {
-    return Center(
-      child: InkWell(
-        child: const Text(
-          "Registrasi",
-          style: TextStyle(color: Colors.blue),
-        ),
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const RegistrasiPage()),
-          );
-        },
-      ),
+  Widget _registrationMenu() {
+    return InkWell(
+      child:
+          const Text("Registrasi", style: TextStyle(color: Colors.blueAccent)),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const RegistrasiPage()),
+        );
+      },
     );
   }
 }

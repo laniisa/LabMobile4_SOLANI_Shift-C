@@ -2,18 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:tokokita/ui/produk_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Toko Kita',
-      debugShowCheckedModeBanner: false,
-      home: ProdukPage(),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white, // Mengatur latar belakang
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.teal, // Contoh warna tema
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+        ),
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.teal),
+      ),
+      home: ProdukPage(), // Hapus 'const' dari sini
     );
   }
 }

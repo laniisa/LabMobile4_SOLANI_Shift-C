@@ -4,7 +4,7 @@ import 'package:tokokita/model/produk.dart';
 class ProdukForm extends StatefulWidget {
   final Produk? produk;
 
-  ProdukForm({Key? key, this.produk}) : super(key: key);
+  const ProdukForm({Key? key, this.produk}) : super(key: key);
 
   @override
   _ProdukFormState createState() => _ProdukFormState();
@@ -31,10 +31,12 @@ class _ProdukFormState extends State<ProdukForm> {
       setState(() {
         judul = "UBAH PRODUK SOLANI";
         tombolSubmit = "UBAH";
-        _kodeProdukTextboxController.text = widget.produk!.kodeProduk!;
-        _namaProdukTextboxController.text = widget.produk!.namaProduk!;
+        _kodeProdukTextboxController.text =
+            widget.produk?.kodeProduk ?? ''; // Menggunakan operator null-aware
+        _namaProdukTextboxController.text =
+            widget.produk?.namaProduk ?? ''; // Menggunakan operator null-aware
         _hargaProdukTextboxController.text =
-            widget.produk!.hargaProduk.toString();
+            widget.produk!.hargaProduk.toString(); // Pastikan harga tidak null
       });
     } else {
       judul = "TAMBAH PRODUK SOLANI";
@@ -65,7 +67,6 @@ class _ProdukFormState extends State<ProdukForm> {
     );
   }
 
-  // Membuat Textbox Kode Produk
   Widget _kodeProdukTextField() {
     return TextFormField(
       decoration: const InputDecoration(labelText: "Kode Produk"),
@@ -80,7 +81,6 @@ class _ProdukFormState extends State<ProdukForm> {
     );
   }
 
-  // Membuat Textbox Nama Produk
   Widget _namaProdukTextField() {
     return TextFormField(
       decoration: const InputDecoration(labelText: "Nama Produk"),
@@ -95,7 +95,6 @@ class _ProdukFormState extends State<ProdukForm> {
     );
   }
 
-  // Membuat Textbox Harga Produk
   Widget _hargaProdukTextField() {
     return TextFormField(
       decoration: const InputDecoration(labelText: "Harga"),
@@ -110,7 +109,6 @@ class _ProdukFormState extends State<ProdukForm> {
     );
   }
 
-  // Membuat Tombol Simpan/Ubah
   Widget _buttonSubmit() {
     return OutlinedButton(
       child: Text(tombolSubmit),

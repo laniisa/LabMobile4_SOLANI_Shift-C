@@ -94,7 +94,8 @@ class ItemProduk extends StatelessWidget {
       },
       child: Card(
         child: ListTile(
-          title: Text(produk.namaProduk!),
+          title: Text(produk.namaProduk ??
+              'Nama Tidak Ditemukan'), // Menambahkan nilai default
           subtitle: Text("Rp. ${produk.hargaProduk.toString()}"),
         ),
       ),
